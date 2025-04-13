@@ -1,13 +1,13 @@
 [gd_scene load_steps=4 format=3 uid="uid://cucwmvb106547"]
 
-[ext_resource type="Script" uid="uid://de2a3evtjauqn" path="res://Scripts/Tower.cs" id="1_0itbn"]
+[ext_resource type="Script" uid="uid://be5pv3ybksu0c" path="res://Scripts/Towers/Tower.cs" id="1_58crs"]
 [ext_resource type="Texture2D" uid="uid://dhpv2o5cnjiu3" path="res://Textures/Towers/testTower.png" id="2_wxjdw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bn6qc"]
 size = Vector2(64, 64)
 
 [node name="Tower" type="Node2D"]
-script = ExtResource("1_0itbn")
+script = ExtResource("1_58crs")
 
 [node name="Area2D" type="Area2D" parent="."]
 

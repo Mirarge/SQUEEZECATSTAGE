@@ -1,7 +1,16 @@
-[gd_scene load_steps=2 format=3 uid="uid://blwig0qme0s13"]
+[gd_scene load_steps=4 format=3 uid="uid://blwig0qme0s13"]
 
-[ext_resource type="Script" uid="uid://df6ce7jl2xt0j" path="res://Scripts/LaneSpawner.cs" id="1_ig7tw"]
+[ext_resource type="Script" uid="uid://deftxc5g2dmqo" path="res://Scripts/Managers/LaneManager.cs" id="1_h2yge"]
+[ext_resource type="Script" uid="uid://cb7r53i7sq6qm" path="res://Scripts/Managers/TowerManager.cs" id="2_1bvp3"]
+[ext_resource type="Script" uid="uid://dl5g82ug1283d" path="res://Scripts/Managers/GameManager.cs" id="3_lquwl"]
 
-[node name="LaneSpawner" type="Node2D"]
-position = Vector2(186, 227)
-script = ExtResource("1_ig7tw")
+[node name="SceneRoot" type="Node2D"]
+
+[node name="GameManager" type="Node2D" parent="."]
+script = ExtResource("3_lquwl")
+
+[node name="TowerManager" type="Node2D" parent="GameManager"]
+script = ExtResource("2_1bvp3")
+
+[node name="LaneManager" type="Node2D" parent="GameManager"]
+script = ExtResource("1_h2yge")
