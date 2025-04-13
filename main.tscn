@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://blwig0qme0s13"]
+
+[ext_resource type="Script" uid="uid://df6ce7jl2xt0j" path="res://Scripts/LaneSpawner.cs" id="1_ig7tw"]
+
+[node name="LaneSpawner" type="Node2D"]
+position = Vector2(186, 227)
+script = ExtResource("1_ig7tw")
