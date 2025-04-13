@@ -27,7 +27,6 @@ public partial class TowerManager : Node2D
 
     public void FireAllTowers()
     {
-        GD.Print("Firing here too...");
         foreach (var tower in towers)
         {
             tower.Fire();
