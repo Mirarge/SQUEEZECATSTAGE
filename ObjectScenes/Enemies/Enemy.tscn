@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://wodxcirfxxn2"]
+
+[ext_resource type="Texture2D" uid="uid://bwhc4ws0ua8ls" path="res://Textures/Enemies/Skeleton.png" id="1_clgpg"]
+[ext_resource type="Script" uid="uid://bgc035glnb26u" path="res://Scripts/Enemies/Enemy.cs" id="1_o23uc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o23uc"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fixo2"]
+size = Vector2(64, 64)
+
+[node name="Enemy" type="Node2D"]
+script = ExtResource("1_o23uc")
+
+[node name="HitboxArea" type="Area2D" parent="."]
+
+[node name="Sprite2D" type="Sprite2D" parent="HitboxArea"]
+texture_filter = 1
+position = Vector2(0, -32)
+texture = ExtResource("1_clgpg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
+shape = SubResource("RectangleShape2D_o23uc")
+
+[node name="SightArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SightArea"]
+shape = SubResource("RectangleShape2D_fixo2")

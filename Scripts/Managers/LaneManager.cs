@@ -5,6 +5,7 @@ public partial class LaneManager : Node2D
 {
 	PackedScene tileScene;
 	public GameManager gameManager;
+	public int laneLength = 10;
 
 	public override void _Ready()
 	{
@@ -15,7 +16,7 @@ public partial class LaneManager : Node2D
 	{
 		for (int lane = 0; lane < 3; lane++)
 		{
-			for (int row = 0; row < 10; row++)
+			for (int row = 0; row < laneLength; row++)
 			{
 				Tile tileInstance = tileScene.Instantiate<Tile>();
 				tileInstance.Position = new Vector2((row * 64)+32+(lane*16), (lane*64)+32);

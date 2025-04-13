@@ -5,6 +5,7 @@ public partial class GameManager : Node2D
 {
 	public LaneManager laneManager;
 	public TowerManager towerManager;
+	public WaveManager waveManager;
 	public override void _Ready()
 	{
 		Timer timer = new Timer();
@@ -15,13 +16,14 @@ public partial class GameManager : Node2D
 		timer.Connect("timeout", new Callable(this, nameof(TimerLoop)));
 
 		towerManager = GetNode<TowerManager>("TowerManager");
-		GD.Print("My tower manager: " + towerManager);
 		towerManager.gameManager = this;
 		laneManager = GetNode<LaneManager>("LaneManager");
-		GD.Print("My lane manager: " + laneManager);
 		laneManager.gameManager = this;
+		waveManager = GetNode<WaveManager>("WaveManager");
+		waveManager.gameManager = this;
 
 		laneManager.SpawnTiles();
+		waveManager.SpawnWave();
 	}
 
 	private void TimerLoop()
