@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://bm18u3b5mlvyr"]
+[gd_scene load_steps=4 format=3 uid="uid://bm18u3b5mlvyr"]
 
 [ext_resource type="PackedScene" uid="uid://cucwmvb106547" path="res://ObjectScenes/Towers/Tower.tscn" id="1_n8vsc"]
+[ext_resource type="Texture2D" uid="uid://h642cd8jwer6" path="res://Textures/Towers/cannonTower.png" id="2_b2puv"]
 [ext_resource type="Script" uid="uid://6qwkpmpxaxgl" path="res://Scripts/Towers/CannonTower.cs" id="2_xtka1"]
 
 [node name="Tower" instance=ExtResource("1_n8vsc")]
 script = ExtResource("2_xtka1")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_b2puv")

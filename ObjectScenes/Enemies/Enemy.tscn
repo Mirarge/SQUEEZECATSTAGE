@@ -12,17 +12,21 @@ size = Vector2(64, 64)
 [node name="Enemy" type="Node2D"]
 script = ExtResource("1_o23uc")
 
-[node name="HitboxArea" type="Area2D" parent="."]
-
-[node name="Sprite2D" type="Sprite2D" parent="HitboxArea"]
+[node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, -32)
 texture = ExtResource("1_clgpg")
+
+[node name="HitboxArea" type="Area2D" parent="."]
+scale = Vector2(0.75, 0.75)
+collision_layer = 4
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxArea"]
 shape = SubResource("RectangleShape2D_o23uc")
 
 [node name="SightArea" type="Area2D" parent="."]
+collision_layer = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="SightArea"]
 shape = SubResource("RectangleShape2D_fixo2")

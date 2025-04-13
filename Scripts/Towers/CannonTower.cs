@@ -3,7 +3,7 @@ using System;
 
 public partial class CannonTower : Tower
 {
-	public int HP = 1;
+	public override int HP { get; set; } = 10;
 	public int fireCooldown = 10;
 	public int baseCooldown = 10;
 	public override int sightDistance { get; set; } = 5;

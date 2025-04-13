@@ -8,7 +8,7 @@ public partial class WaveManager : Node2D
 	private List<Enemy> enemies = new List<Enemy>();
 	private Dictionary<string, PackedScene> enemyTypes = new Dictionary<string, PackedScene>();
 	private float enemyUpdateCooldown = 0f;  // How often to update enemies
-	private double cooldownTimer = 0.0f;
+	private double cooldownTimer = 1f;
 	public override void _Ready()
 	{
 		LoadEnemies();
@@ -19,13 +19,12 @@ public partial class WaveManager : Node2D
 
 		if (cooldownTimer >= enemyUpdateCooldown)
 		{
-			// Loop through all enemies and update their behavior
 			foreach (Enemy enemy in enemies)
 			{
-				enemy.MoveOnce();  // This could handle movement, attacks, etc.
+				enemy.Update();
 			}
 
-			cooldownTimer = 0.0f;  // Reset the cooldown
+			cooldownTimer = 0.0f;
 		}
 	}
 
@@ -33,7 +32,7 @@ public partial class WaveManager : Node2D
 	{
 		PackedScene enemyScene = getEnemyByName(enemyName);
 		Enemy enemy = enemyScene.Instantiate<Enemy>();
-		enemy.Position = new Vector2(Position.X+((gameManager.laneManager.laneLength+3)*64)+32 + (lane * 16), (lane*64)-32);
+		enemy.Position = new Vector2(Position.X+((gameManager.laneManager.laneLength+3)*64)+32 + (lane * 16), (lane*64)+32);
 		enemy.ZIndex = (lane * 2)+1;
 		AddChild(enemy);
 		enemies.Add(enemy);

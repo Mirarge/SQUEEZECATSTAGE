@@ -19,17 +19,28 @@ public partial class TowerManager : Node2D
         Tower tower = towerScene.Instantiate<Tower>();
         tower.Position = tile.Position;
         tower.ZIndex = tile.ZIndex+1;
+        tower.manager = this;
+        tower.myTile = tile;
         AddChild(tower);
 
         towers.Add(tower);
         tile.placeTower(tower);
+    }
+    public void DestroyTower(Tower tower)
+    {
+        towers.Remove(tower);
+        tower.myTile.removeTower();
+        tower.QueueFree();
     }
 
     public void FireAllTowers()
     {
         foreach (var tower in towers)
         {
-            tower.Fire();
+            if (tower.DoISeeAnEnemy())
+            {
+                tower.Fire();
+            }
         }
 
     }

@@ -34,6 +34,11 @@ public partial class Tile : Node2D
 		this.tower = tower;
 	}
 
+	public void removeTower()
+	{
+		this.tower = null;
+	}
+
 	private void OnInputEvent(Node viewport, InputEvent inputEvent, int shapeIdx)
 	{
 		if(inputEvent is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)//Surely there is a better way to test for left click

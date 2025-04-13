@@ -18,3 +18,10 @@ config/icon="res://icon.svg"
 [dotnet]
 
 project/assembly_name="SqueezecatStage"
+
+[layer_names]
+
+2d_physics/layer_1="TowerHitbox"
+2d_physics/layer_2="TowerSightline"
+2d_physics/layer_3="EnemyHitbox"
+2d_physics/layer_4="EnemySightline"
