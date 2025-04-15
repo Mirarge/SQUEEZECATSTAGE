@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://blwig0qme0s13"]
+[gd_scene load_steps=6 format=3 uid="uid://blwig0qme0s13"]
 
 [ext_resource type="Script" uid="uid://deftxc5g2dmqo" path="res://Scripts/Managers/LaneManager.cs" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://cb7r53i7sq6qm" path="res://Scripts/Managers/TowerManager.cs" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://dl5g82ug1283d" path="res://Scripts/Managers/GameManager.cs" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://cvyxyl30dw38d" path="res://Scripts/Managers/WaveManager.cs" id="4_1bvp3"]
+[ext_resource type="Script" uid="uid://ny0l3yhqktag" path="res://Scripts/Managers/ProjectileManager.cs" id="5_lquwl"]
 
 [node name="SceneRoot" type="Node2D"]
 
@@ -19,3 +20,9 @@ script = ExtResource("1_h2yge")
 
 [node name="WaveManager" type="Node2D" parent="GameManager"]
 script = ExtResource("4_1bvp3")
+
+[node name="ProjectileManager" type="Node2D" parent="GameManager"]
+script = ExtResource("5_lquwl")
+
+[node name="Boundary" type="Node2D" parent="GameManager"]
+position = Vector2(1000, 0)

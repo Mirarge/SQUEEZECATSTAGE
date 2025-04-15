@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cucwmvb106547" path="res://ObjectScenes/Towers/Tower.tscn" id="1_mlrm0"]
 [ext_resource type="Script" uid="uid://dhykaaqnrtuvo" path="res://Scripts/Towers/BarricadeTower.cs" id="2_mlrm0"]
-[ext_resource type="Texture2D" uid="uid://cd8cl7ut5gsy2" path="res://Textures/Towers/barricadeTower.png" id="3_bakhn"]
+[ext_resource type="Texture2D" uid="uid://cd8cl7ut5gsy2" path="res://Textures/Towers/BarricadeTower.png" id="3_bakhn"]
 
 [node name="Tower" instance=ExtResource("1_mlrm0")]
 script = ExtResource("2_mlrm0")

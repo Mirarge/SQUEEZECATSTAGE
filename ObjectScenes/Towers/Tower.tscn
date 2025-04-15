@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cucwmvb106547"]
 
 [ext_resource type="Script" uid="uid://be5pv3ybksu0c" path="res://Scripts/Towers/Tower.cs" id="1_58crs"]
-[ext_resource type="Texture2D" uid="uid://dhpv2o5cnjiu3" path="res://Textures/Towers/testTower.png" id="2_wxjdw"]
+[ext_resource type="Texture2D" uid="uid://dhpv2o5cnjiu3" path="res://Textures/Towers/Tower.png" id="2_wxjdw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bn6qc"]
 size = Vector2(64, 64)

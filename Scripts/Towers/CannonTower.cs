@@ -12,7 +12,8 @@ public partial class CannonTower : Tower
 		if (fireCooldown > 0) fireCooldown--;
 		else
 		{
-			GD.Print("I AM FIRING");
+			GD.Print("Creating projectile");
+			manager.gameManager.projectileManager.SpawnProjectile("TestProjectile", Position, new Vector2(1, 0), this.ZIndex + 1, true);
 			fireCooldown = baseCooldown;
 		}
 	}

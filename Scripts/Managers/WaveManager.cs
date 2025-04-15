@@ -34,15 +34,26 @@ public partial class WaveManager : Node2D
 		Enemy enemy = enemyScene.Instantiate<Enemy>();
 		enemy.Position = new Vector2(Position.X+((gameManager.laneManager.laneLength+3)*64)+32 + (lane * 16), (lane*64)+32);
 		enemy.ZIndex = (lane * 2)+1;
+		enemy.Name = enemyName;
+		enemy.manager = this;
 		AddChild(enemy);
 		enemies.Add(enemy);
+	}
+	public void DestroyEnemy(Enemy enemy)
+	{
+		enemies.Remove(enemy);
+		enemy.QueueFree();
 	}
 
 	public void SpawnWave()
 	{
-		for (int i = 0; i < 3; i++)
+		//for (int i = 0; i < 3; i++)
+		//{
+		//	AddEnemy("TestEnemy", i);
+		//}
+		for (int i = 0; i < 20; i++)
 		{
-			AddEnemy("TestEnemy", i);
+			AddEnemy("TestEnemy", (int)(GD.Randf()*3));
 		}
 	}
 	public PackedScene getEnemyByName(string towerName)

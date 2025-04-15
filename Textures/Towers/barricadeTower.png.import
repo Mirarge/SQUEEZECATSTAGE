@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cd8cl7ut5gsy2"
-path="res://.godot/imported/barricadeTower.png-cfe7be8f5a960b739b1a23364ace5c74.ctex"
+path="res://.godot/imported/BarricadeTower.png-f98a419be2fc4e0fcfb234f06f6b6e61.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Towers/barricadeTower.png"
-dest_files=["res://.godot/imported/barricadeTower.png-cfe7be8f5a960b739b1a23364ace5c74.ctex"]
+source_file="res://Textures/Towers/BarricadeTower.png"
+dest_files=["res://.godot/imported/BarricadeTower.png-f98a419be2fc4e0fcfb234f06f6b6e61.ctex"]
 
 [params]
 

@@ -9,7 +9,7 @@ public partial class Enemy : Node2D
 	public virtual int sightDistance { get; set; } = 0;
 	public int attackCooldown = 50;
 	public int baseCooldown = 50;
-	
+	public WaveManager manager;
 	
 	public Area2D sightArea;
 	public Sprite2D sprite;
@@ -39,6 +39,10 @@ public partial class Enemy : Node2D
 	public virtual void TakeDamage(int damage)
 	{
 		HP -= damage;
+		if (HP <= 0)
+		{
+			this.manager.DestroyEnemy(this);
+		}
 	}
 
 	public virtual void Update()
