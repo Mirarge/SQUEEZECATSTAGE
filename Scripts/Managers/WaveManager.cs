@@ -1,4 +1,5 @@
 using Godot;
+using SqueezecatStage.Scripts;
 using System;
 using System.Collections.Generic;
 
@@ -6,13 +7,8 @@ public partial class WaveManager : Node2D
 {
 	public GameManager gameManager;
 	private List<Enemy> enemies = new List<Enemy>();
-	private Dictionary<string, PackedScene> enemyTypes = new Dictionary<string, PackedScene>();
 	private float enemyUpdateCooldown = 0f;  // How often to update enemies
 	private double cooldownTimer = 1f;
-	public override void _Ready()
-	{
-		LoadEnemies();
-	}
 	public override void _Process(double delta)
 	{
 		cooldownTimer += delta;
@@ -32,7 +28,7 @@ public partial class WaveManager : Node2D
 	{
 		PackedScene enemyScene = getEnemyByName(enemyName);
 		Enemy enemy = enemyScene.Instantiate<Enemy>();
-		enemy.Position = new Vector2(Position.X+((gameManager.laneManager.laneLength+3)*64)+32 + (lane * 16), (lane*64)+32);
+		enemy.Position = new Vector2(gameManager.lanePosition.X+((gameManager.laneManager.laneLength+3)*64)+32 + (lane * 16), (lane*64)+32) + gameManager.lanePosition;
 		enemy.ZIndex = (lane * 2)+1;
 		enemy.Name = enemyName;
 		enemy.manager = this;
@@ -60,20 +56,15 @@ public partial class WaveManager : Node2D
 	{
 		try
 		{
-			return enemyTypes[towerName];
+			return DataStorage.Instance.enemyTypes[towerName];
 		}
 		catch (Exception e)
 		{
 			GD.Print("Issue getting enemy object: " + e.Message);
-			return enemyTypes["TestEnemy"];
+			return DataStorage.Instance.enemyTypes["TestEnemy"];
 		}
 
 	}
 
-	private void LoadEnemies()
-	{
-		enemyTypes.Add("TestEnemy", GD.Load<PackedScene>("res://ObjectScenes/Enemies/Enemy.tscn"));
-		//towerTypes.Add("CannonTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/CannonTower.tscn"));
-		//towerTypes.Add("BarricadeTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/BarricadeTower.tscn"));
-	}
+	
 }

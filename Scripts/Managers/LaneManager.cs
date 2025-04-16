@@ -19,7 +19,7 @@ public partial class LaneManager : Node2D
 			for (int row = 0; row < laneLength; row++)
 			{
 				Tile tileInstance = tileScene.Instantiate<Tile>();
-				tileInstance.Position = new Vector2((row * 64)+32+(lane*16), (lane*64)+32);
+				tileInstance.Position = new Vector2((row * 64)+32+(lane*16), (lane*64)+32) + gameManager.lanePosition;
 				tileInstance.setRowColumn(row, lane);
 				tileInstance.manager = this;
 				tileInstance.ZIndex = lane * 2;

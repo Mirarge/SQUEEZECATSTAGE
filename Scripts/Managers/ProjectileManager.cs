@@ -1,4 +1,5 @@
 using Godot;
+using SqueezecatStage.Scripts;
 using System;
 using System.Collections.Generic;
 
@@ -8,15 +9,11 @@ public partial class ProjectileManager : Node2D
 	public List<Projectile> projectilePool = new List<Projectile>();
 	public List<Projectile> projectilesRequestingRemoval = new List<Projectile>();
 	public List<Projectile> projectilesInUse = new List<Projectile>();
-	private Dictionary<string, PackedScene> projectileTypes = new Dictionary<string, PackedScene>();
+
 
 	private float projectileUpdateCooldown = 0f;  // How often to update enemies
 	private double cooldownTimer = 1f;
 
-	public override void _Ready()
-	{
-		LoadProjectiles();
-	}
 	public override void _Process(double delta)
 	{
 		cooldownTimer += delta;
@@ -45,18 +42,18 @@ public partial class ProjectileManager : Node2D
 		Projectile projectile = null;
 		foreach (Projectile proj in projectilePool)
 		{
-			if(proj.name == projectileName)
+			if (proj.name == projectileName)
 			{//Use projectile from the pool
 				projectile = proj;
 				projectilePool.Remove(proj);
 				break;
 			}
 		}
-		if(projectile == null)
+		if (projectile == null)
 		{//spawn new projectile
 			PackedScene projectileScene = getProjectileByName(projectileName);
 			projectile = projectileScene.Instantiate<Projectile>();
-			
+
 		}
 		projectile.Position = position;
 		projectile.ZIndex = zIndex;
@@ -79,32 +76,29 @@ public partial class ProjectileManager : Node2D
 		projectilesInUse.Remove(projectile);
 		projectilePool.Add(projectile);
 		GD.Print("Projectiles in projectile pool: " + projectilePool.Count);
-		if(projectilePool.Count > 100)
+		if (projectilePool.Count > 100)
 		{ //just in case, limit the pool to 100 projectiles
 			Projectile removable = projectilePool[0];
 			projectilePool.Remove(removable);
 			removable.CallDeferred("queue_free");
 		}
 		CallDeferred("remove_child", projectile);
-		projectile.Position = new Vector2(0,0);
+		projectile.Position = new Vector2(0, 0);
 	}
 
 	public PackedScene getProjectileByName(string projectileName)
 	{
 		try
 		{
-			return projectileTypes[projectileName];
+			return DataStorage.Instance.projectileTypes[projectileName];
 		}
 		catch (Exception e)
 		{
 			GD.Print("Issue getting projectile object: " + e.Message);
-			return projectileTypes["TestProjectile"];
+			return DataStorage.Instance.projectileTypes["TestProjectile"];
 		}
 
 	}
-
-	private void LoadProjectiles()
-	{
-		projectileTypes.Add("TestProjectile", GD.Load<PackedScene>("res://ObjectScenes/Projectiles/Projectile.tscn"));
-	}
 }
+
+	

@@ -1,0 +1,66 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2buvkve0eopa"]
+
+[ext_resource type="Script" uid="uid://dc6kjwwdsh58l" path="res://Scripts/ShopIcon.cs" id="1_hbblo"]
+[ext_resource type="Texture2D" uid="uid://h642cd8jwer6" path="res://Textures/Towers/CannonTower.png" id="2_iwjb5"]
+
+[node name="ShopIcon" type="Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+script = ExtResource("1_hbblo")
+
+[node name="RootControl" type="Control" parent="."]
+clip_contents = true
+layout_mode = 3
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0
+
+[node name="NameOverlay" type="ColorRect" parent="RootControl"]
+z_index = 1
+custom_minimum_size = Vector2(100, 20)
+offset_right = 100.0
+offset_bottom = 20.0
+color = Color(0, 0, 0, 0.356863)
+
+[node name="NameLabel" type="Label" parent="RootControl/NameOverlay"]
+offset_right = 100.0
+offset_bottom = 36.0
+theme_override_font_sizes/font_size = 12
+text = "Tower Name"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="TowerImage" type="TextureRect" parent="RootControl"]
+offset_top = -102.0
+offset_right = 100.0
+offset_bottom = 100.0
+texture = ExtResource("2_iwjb5")
+expand_mode = 5
+
+[node name="BackgroundColor" type="ColorRect" parent="RootControl"]
+show_behind_parent = true
+z_index = -1
+custom_minimum_size = Vector2(100, 100)
+offset_right = 100.0
+offset_bottom = 100.0
+color = Color(0.355314, 0.355314, 0.355314, 1)
+
+[node name="PriceOverlay" type="ColorRect" parent="RootControl"]
+z_index = 1
+offset_left = 55.0
+offset_top = 83.0
+offset_right = 100.0
+offset_bottom = 100.0
+color = Color(0, 0, 0, 0.356863)
+
+[node name="PriceLabel" type="Label" parent="RootControl/PriceOverlay"]
+offset_right = 45.0
+offset_bottom = 17.0
+theme_override_font_sizes/font_size = 12
+text = "price"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

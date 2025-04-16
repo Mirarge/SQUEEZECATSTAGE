@@ -1,15 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://blwig0qme0s13"]
+[gd_scene load_steps=9 format=3 uid="uid://blwig0qme0s13"]
 
 [ext_resource type="Script" uid="uid://deftxc5g2dmqo" path="res://Scripts/Managers/LaneManager.cs" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://cb7r53i7sq6qm" path="res://Scripts/Managers/TowerManager.cs" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://dl5g82ug1283d" path="res://Scripts/Managers/GameManager.cs" id="3_lquwl"]
 [ext_resource type="Script" uid="uid://cvyxyl30dw38d" path="res://Scripts/Managers/WaveManager.cs" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://ny0l3yhqktag" path="res://Scripts/Managers/ProjectileManager.cs" id="5_lquwl"]
+[ext_resource type="Script" uid="uid://d0ui8xo45n35c" path="res://Scripts/Managers/UiManager.cs" id="6_5vw27"]
+[ext_resource type="StyleBox" uid="uid://cktyg868nam2n" path="res://Styles/sidepanel.stylebox" id="7_kek77"]
+[ext_resource type="StyleBox" uid="uid://dr2vkbwaryfap" path="res://Styles/sidepanel_border.stylebox" id="8_4c57u"]
 
 [node name="SceneRoot" type="Node2D"]
 
 [node name="GameManager" type="Node2D" parent="."]
-position = Vector2(204.43, 162.495)
 script = ExtResource("3_lquwl")
 
 [node name="TowerManager" type="Node2D" parent="GameManager"]
@@ -25,4 +27,91 @@ script = ExtResource("4_1bvp3")
 script = ExtResource("5_lquwl")
 
 [node name="Boundary" type="Node2D" parent="GameManager"]
-position = Vector2(1000, 0)
+position = Vector2(1200, 0)
+
+[node name="LanePosition" type="Node2D" parent="GameManager"]
+position = Vector2(204.43, 162.495)
+
+[node name="UIManager" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("6_5vw27")
+
+[node name="LeftSideInformationBox" type="VBoxContainer" parent="UIManager"]
+top_level = true
+layout_mode = 0
+offset_top = 490.0
+offset_right = 186.0
+offset_bottom = 651.0
+theme_override_constants/separation = 20
+
+[node name="CurrentWaveLabel" type="Label" parent="UIManager/LeftSideInformationBox"]
+layout_mode = 2
+text = "Wave 0"
+
+[node name="CoinsLabel" type="Label" parent="UIManager/LeftSideInformationBox"]
+layout_mode = 2
+text = "Coins: "
+
+[node name="EnemiesDefeatedLabel" type="Label" parent="UIManager/LeftSideInformationBox"]
+layout_mode = 2
+text = "Total enemies defeated:"
+
+[node name="TowerCategoriesTabBar" type="TabBar" parent="UIManager"]
+top_level = true
+layout_mode = 0
+offset_left = 267.0
+offset_top = 469.0
+offset_right = 1152.0
+offset_bottom = 509.0
+
+[node name="ScrollContainer" type="ScrollContainer" parent="UIManager"]
+top_level = true
+layout_mode = 0
+offset_left = 267.0
+offset_top = 516.0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="TowerContainer" type="GridContainer" parent="UIManager/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/h_separation = 25
+theme_override_constants/v_separation = 25
+columns = 7
+
+[node name="DecorativePanels" type="Node2D" parent="UIManager"]
+
+[node name="UIBackground2" type="Panel" parent="UIManager/DecorativePanels"]
+show_behind_parent = true
+z_index = -1
+offset_left = 240.0
+offset_top = 461.0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = ExtResource("7_kek77")
+
+[node name="UIBackground" type="ColorRect" parent="UIManager/DecorativePanels"]
+show_behind_parent = true
+z_index = -2
+offset_top = 489.0
+offset_right = 244.0
+offset_bottom = 648.0
+color = Color(0.1029, 0.318982, 0.756082, 1)
+
+[node name="UIBackground3" type="Panel" parent="UIManager/DecorativePanels"]
+show_behind_parent = true
+z_index = -2
+offset_left = 232.0
+offset_top = 453.0
+offset_right = 1152.0
+offset_bottom = 649.0
+theme_override_styles/panel = ExtResource("8_4c57u")
+
+[node name="UIBackground4" type="ColorRect" parent="UIManager/DecorativePanels"]
+show_behind_parent = true
+z_index = -2
+offset_top = 481.0
+offset_right = 244.0
+offset_bottom = 489.0

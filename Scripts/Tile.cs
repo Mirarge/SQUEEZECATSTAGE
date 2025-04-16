@@ -1,4 +1,5 @@
 using Godot;
+using SqueezecatStage.Scripts;
 using System;
 using System.Data;
 
@@ -44,7 +45,8 @@ public partial class Tile : Node2D
 		if(inputEvent is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)//Surely there is a better way to test for left click
 		{
 			GD.Print($"Tile at row {row} at column {column} was clicked!");
-			manager.gameManager.towerManager.PlaceTower(this, "CannonTower");
+            DataStorage.Instance.Coins += 10;
+            manager.gameManager.towerManager.PlaceTower(this, "CannonTower");
 		}
 	}
 }
