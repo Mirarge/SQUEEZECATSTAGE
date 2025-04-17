@@ -17,6 +17,8 @@ public partial class Enemy : Node2D
 
 	private Tower towerInSight = null;
 
+	public int budgetCost = 1;
+
 	public override void _Ready()
 	{
 		base._Ready();

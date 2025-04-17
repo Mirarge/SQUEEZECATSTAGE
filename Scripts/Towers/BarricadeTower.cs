@@ -3,6 +3,10 @@ using System;
 
 public partial class BarricadeTower : Tower
 {
-	public new int HP = 1;
-	public new int fireCooldown = 999999;
+    public override void _Ready()
+    {
+        base.HP = 1;
+        base.fireCooldown = int.MaxValue;
+        base._Ready();
+    }
 }

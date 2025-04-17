@@ -58,6 +58,7 @@ namespace SqueezecatStage.Scripts
         private void LoadProjectiles()
         {
             projectileTypes.Add("TestProjectile", GD.Load<PackedScene>("res://ObjectScenes/Projectiles/Projectile.tscn"));
+            projectileTypes.Add("InstProjectile", GD.Load<PackedScene>("res://ObjectScenes/Projectiles/InstProjectile.tscn"));
         }
         private void LoadTowers()
         {
@@ -70,7 +71,8 @@ namespace SqueezecatStage.Scripts
         }
         private void LoadEnemies()
         {
-            enemyTypes.Add("TestEnemy", GD.Load<PackedScene>("res://ObjectScenes/Enemies/Enemy.tscn"));
+            //enemyTypes.Add("TestEnemy", GD.Load<PackedScene>("res://ObjectScenes/Enemies/Enemy.tscn"));
+            enemyTypes.Add("DefaultEnemy", GD.Load<PackedScene>("res://ObjectScenes/Enemies/DefaultEnemy.tscn"));
         }
         private void LoadTowerShopDefinitions()
         {

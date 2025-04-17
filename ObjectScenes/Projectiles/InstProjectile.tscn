@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://blc7ma2gx7maj"]
+
+[ext_resource type="PackedScene" uid="uid://cnopug2rrjm6n" path="res://ObjectScenes/Projectiles/Projectile.tscn" id="1_cq4sd"]
+[ext_resource type="Script" uid="uid://eegm46n4o6te" path="res://Scripts/Projectiles/InstProjectile.cs" id="2_vljyl"]
+
+[node name="Projectile" instance=ExtResource("1_cq4sd")]
+script = ExtResource("2_vljyl")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = null

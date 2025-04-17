@@ -46,6 +46,7 @@ public partial class ProjectileManager : Node2D
 			{//Use projectile from the pool
 				projectile = proj;
 				projectilePool.Remove(proj);
+				projectile.Visible = true;
 				break;
 			}
 		}
@@ -83,6 +84,7 @@ public partial class ProjectileManager : Node2D
 		}
 		CallDeferred("remove_child", projectile);
 		projectile.Position = new Vector2(0, 0);
+		projectile.Visible = false;
 	}
 
 	public PackedScene getProjectileByName(string projectileName)

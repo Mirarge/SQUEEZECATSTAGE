@@ -3,11 +3,15 @@ using System;
 
 public partial class CannonTower : Tower
 {
-	public override int HP { get; set; } = 300;
-	public int fireCooldown = 10;
-	public int baseCooldown = 10;
-	public override int sightDistance { get; set; } = 6;
-	public async override void Fire()
+    public override void _Ready()
+    {
+        base.HP = 300;
+        base.fireCooldown = 10;
+        base.baseCooldown = 10;
+        base.sightDistance = 6;
+        base._Ready();
+    }
+    public async override void Fire()
 	{
 		if (fireCooldown > 0) fireCooldown--;
 		else

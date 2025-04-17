@@ -45,8 +45,8 @@ top_level = true
 layout_mode = 0
 offset_top = 490.0
 offset_right = 186.0
-offset_bottom = 651.0
-theme_override_constants/separation = 20
+offset_bottom = 575.0
+theme_override_constants/separation = 8
 
 [node name="CurrentWaveLabel" type="Label" parent="UIManager/LeftSideInformationBox"]
 layout_mode = 2
@@ -120,3 +120,15 @@ offset_top = 481.0
 offset_right = 244.0
 offset_bottom = 489.0
 mouse_filter = 1
+
+[node name="NextWaveContainer" type="HBoxContainer" parent="UIManager"]
+layout_mode = 0
+offset_top = 594.0
+offset_right = 232.0
+offset_bottom = 633.0
+alignment = 1
+
+[node name="StartNextWaveButton" type="Button" parent="UIManager/NextWaveContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+text = "Start next wave"

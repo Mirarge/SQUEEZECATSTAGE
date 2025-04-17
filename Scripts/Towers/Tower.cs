@@ -5,10 +5,10 @@ public partial class Tower : Node2D
 {
 	public TowerManager manager;
 
-	public virtual int HP { get; set; } = 1;
-	public virtual int fireCooldown { get; set; } = 0;
-	public virtual int baseCooldown { get; set; } = 10;
-	public virtual int sightDistance { get; set; } = 0;
+	public int HP = 1;
+	public int fireCooldown = 0;
+	public int baseCooldown = 10;
+	public int sightDistance = 0;
 	public Area2D sightArea;
 	public Sprite2D sprite;
 	public Tile myTile;
@@ -27,7 +27,7 @@ public partial class Tower : Node2D
 
 	public async virtual void Fire()
 	{
-		
+
 	}
 
 	public virtual void TakeDamage(int damage)

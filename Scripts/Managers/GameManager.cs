@@ -43,12 +43,13 @@ public partial class GameManager : Node2D
 
 
 		laneManager.SpawnTiles();
-		waveManager.SpawnWave();
-		ModifyCoins(100);
+		waveManager.SpawnWave(10, 10);
+		ModifyCoins(500);
+		DataStorage.Instance.Wave = 10;
 
 
     }
-	public void NextWave()
+	public void IncreaseWaveCount()
 	{
 		DataStorage.Instance.Wave += 1;
 	}
