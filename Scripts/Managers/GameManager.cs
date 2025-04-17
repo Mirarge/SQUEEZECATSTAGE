@@ -11,6 +11,9 @@ public partial class GameManager : Node2D
 	public UiManager uiManager;
 
 
+	public TowerShopDefinition selectedTower;
+
+
 	public Node2D boundary;
 	public Vector2 lanePosition;
 	public override void _Ready()
@@ -38,6 +41,7 @@ public partial class GameManager : Node2D
 
 		//new Vector2(204.43f, 162.495f);
 
+
 		laneManager.SpawnTiles();
 		waveManager.SpawnWave();
 		ModifyCoins(100);
@@ -55,5 +59,10 @@ public partial class GameManager : Node2D
     private void TimerLoop()
 	{
 		towerManager.FireAllTowers();
+	}
+
+	public void SelectTower(TowerShopDefinition tower)
+	{
+		selectedTower = tower;
 	}
 }

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://bkysiku2qwrp7"]
+
+[ext_resource type="PackedScene" uid="uid://cucwmvb106547" path="res://ObjectScenes/Towers/Tower.tscn" id="1_trcqn"]
+[ext_resource type="Texture2D" uid="uid://60weqe75as55" path="res://Textures/Towers/WallTower.png" id="2_1x47g"]
+
+[node name="Tower" instance=ExtResource("1_trcqn")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_1x47g")

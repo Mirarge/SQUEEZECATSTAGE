@@ -10,6 +10,7 @@ public partial class ShopIcon : Control
     private int price;
     private string imageName;
     private int unlockWave = 0;
+    private TowerShopDefinition towerDefinition;
 
     private Label nameLabel;
     private TextureRect towerImage;
@@ -19,11 +20,16 @@ public partial class ShopIcon : Control
 
     private Control waveUnlockBlock;
     private Panel blockedPanel;
+
+    public bool Selected { get { return selected; } set { selected = value; hoverBorder.Visible = value; } }
+    private bool selected = false;
     
 
     private Control clickArea;
 
     private Panel hoverBorder;
+
+    public UiManager manager;
 
     public override void _Ready()
     {
@@ -66,11 +72,20 @@ public partial class ShopIcon : Control
         this.unlockWave = wave;
         unlockWaveLabel.Text = wave.ToString();
     }
+
+    public void SetTowerDefinition(TowerShopDefinition definition)
+    {
+        this.towerDefinition = definition;
+    }
     private void OnGuiInput(InputEvent @event)
     {
         if (@event is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)
         {
-            GD.Print("WOAGGG");
+            if (CheckIfTowerIsPurchasable())
+            {
+                manager.gameManager.SelectTower(this.towerDefinition);
+                Selected = true;
+            }
         }
     }
     private void OnMouseEntered()
@@ -80,7 +95,10 @@ public partial class ShopIcon : Control
 
     private void OnMouseExited()
     {
-        hoverBorder.Visible = false;
+        if(Selected == false)
+        {
+            hoverBorder.Visible = false;
+        }
     }
 
     private void UpdateWave(int wave)
@@ -99,13 +117,16 @@ public partial class ShopIcon : Control
     {
         CheckIfTowerIsPurchasable();
     }
-    public void CheckIfTowerIsPurchasable()
+    public bool CheckIfTowerIsPurchasable()
     {
-        GD.Print("Going to check for blocker...");
-        if(DataStorage.Instance.Coins >= this.price && DataStorage.Instance.Wave >= this.unlockWave)
+        if (manager.gameManager.selectedTower == this.towerDefinition)
         {
-            GD.Print($"DataStorage.Instance.Coins {DataStorage.Instance.Coins}, this.price {this.price}, DataStorage.Instance.Wave {DataStorage.Instance.Wave}, this.unlockWave {this.unlockWave}");
+            Selected = true;
+        }
+        if (DataStorage.Instance.Coins >= this.price && DataStorage.Instance.Wave >= this.unlockWave)
+        {
             blockedPanel.Visible = false;
+            return true;
         }
         else
         {
@@ -115,6 +136,12 @@ public partial class ShopIcon : Control
                 waveUnlockBlock.Visible = true;
             }
             blockedPanel.Visible = true;
+            if (manager.gameManager.selectedTower == this.towerDefinition)
+            {
+                Selected = false;
+                manager.gameManager.selectedTower = null;
+            }
+            return false;
         }
     }
 }

@@ -55,7 +55,6 @@ public partial class UiManager : Control
     {
         string category = towerCategories[tabIndex];
         List<TowerShopDefinition> towersInCategory = shopTabs[category];
-        GD.Print("Unloading " + currentlyVisibleIcons.Count + " icons");
         for (int i = 0; i < currentlyVisibleIcons.Count; i++)
         {
             ShopIcon icon = currentlyVisibleIcons[i];
@@ -70,7 +69,6 @@ public partial class UiManager : Control
             {
                 icon = unusedIconPool[0];
                 unusedIconPool.Remove(icon);
-                GD.Print("Loading icon from pool. " + unusedIconPool.Count + " left");
             }
             else
             {
@@ -81,6 +79,10 @@ public partial class UiManager : Control
             icon.SetPrice(tower.cost);
             icon.SetImage(tower.codeName);
             icon.SetUnlockWave(tower.unlockWave);
+            icon.SetTowerDefinition(tower);
+            icon.Selected = (gameManager.selectedTower == tower);
+            icon.manager = this;
+
             icon.CheckIfTowerIsPurchasable();
             currentlyVisibleIcons.Add(icon);
         }

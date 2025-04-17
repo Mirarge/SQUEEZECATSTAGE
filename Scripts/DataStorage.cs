@@ -61,9 +61,12 @@ namespace SqueezecatStage.Scripts
         }
         private void LoadTowers()
         {
-            towerTypes.Add("TestTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/Tower.tscn"));
-            towerTypes.Add("CannonTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/CannonTower.tscn"));
-            towerTypes.Add("BarricadeTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/BarricadeTower.tscn"));
+            towerTypes.Add("TestTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/Tower.tscn")); //Debug Tower
+            towerTypes.Add("CannonTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/CannonTower.tscn")); //Peashooter
+            towerTypes.Add("Cannon2Tower", GD.Load<PackedScene>("res://ObjectScenes/Towers/Cannon2Tower.tscn")); //Repeater
+            towerTypes.Add("WallTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/WallTower.tscn")); //Wallnut
+            towerTypes.Add("LandmineTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/LandmineTower.tscn")); //potato mine
+            towerTypes.Add("BarricadeTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/BarricadeTower.tscn")); //LawnMower
         }
         private void LoadEnemies()
         {
@@ -71,10 +74,10 @@ namespace SqueezecatStage.Scripts
         }
         private void LoadTowerShopDefinitions()
         {
-            towerShopDefinitions.Add(new TowerShopDefinition("Cannon Ranged", "CannonTower", 100, "Ranged"));
-            towerShopDefinitions.Add(new TowerShopDefinition("Cannon RANGED", "CannonTower", 200, "Ranged"));
-            towerShopDefinitions.Add(new TowerShopDefinition("Cannon Support", "CannonTower", 120, "Support", 3));
-            towerShopDefinitions.Add(new TowerShopDefinition("Cannon Melee", "CannonTower", 200, "Melee", 2));
+            towerShopDefinitions.Add(new TowerShopDefinition("Cannon", "CannonTower", 100, "Ranged"));
+            towerShopDefinitions.Add(new TowerShopDefinition("Cannon 2", "Cannon2Tower", 200, "Ranged"));
+            towerShopDefinitions.Add(new TowerShopDefinition("Wall", "WallTower", 50, "Support"));
+            towerShopDefinitions.Add(new TowerShopDefinition("Landmine", "LandmineTower", 200, "Melee", 2));
         }
     }
 }

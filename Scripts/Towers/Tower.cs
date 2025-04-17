@@ -25,7 +25,7 @@ public partial class Tower : Node2D
 		SetSightLine();
 	}
 
-	public virtual void Fire()
+	public async virtual void Fire()
 	{
 		
 	}

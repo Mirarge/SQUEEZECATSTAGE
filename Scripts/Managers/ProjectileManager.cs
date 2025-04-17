@@ -75,7 +75,6 @@ public partial class ProjectileManager : Node2D
 	{
 		projectilesInUse.Remove(projectile);
 		projectilePool.Add(projectile);
-		GD.Print("Projectiles in projectile pool: " + projectilePool.Count);
 		if (projectilePool.Count > 100)
 		{ //just in case, limit the pool to 100 projectiles
 			Projectile removable = projectilePool[0];
