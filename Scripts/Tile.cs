@@ -42,9 +42,12 @@ public partial class Tile : Node2D
 
 	private void OnInputEvent(Node viewport, InputEvent inputEvent, int shapeIdx)
 	{
+		
 		if(inputEvent is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)//Surely there is a better way to test for left click
 		{
             manager.gameManager.towerManager.PlaceTower(this, "CannonTower");
-		}
+            manager.gameManager.NextWave();
+            manager.gameManager.ModifyCoins(10);
+        }
 	}
 }

@@ -59,10 +59,7 @@ public partial class WaveManager : Node2D
 
 	public void SpawnWave()
 	{
-		//for (int i = 0; i < 3; i++)
-		//{
-		//	AddEnemy("TestEnemy", i);
-		//}
+		gameManager.NextWave();
 		for (int i = 0; i < 20; i++)
 		{
 			AddEnemy("TestEnemy", (int)(GD.Randf()*3));

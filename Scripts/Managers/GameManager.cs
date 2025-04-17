@@ -40,9 +40,19 @@ public partial class GameManager : Node2D
 
 		laneManager.SpawnTiles();
 		waveManager.SpawnWave();
-	}
+		ModifyCoins(100);
 
-	private void TimerLoop()
+
+    }
+	public void NextWave()
+	{
+		DataStorage.Instance.Wave += 1;
+	}
+    public void ModifyCoins(int modifyAmount)
+    {
+        DataStorage.Instance.Coins += modifyAmount;
+    }
+    private void TimerLoop()
 	{
 		towerManager.FireAllTowers();
 	}

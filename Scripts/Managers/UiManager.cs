@@ -29,9 +29,10 @@ public partial class UiManager : Control
         
         towerCategoriesTabbar = GetNode<TabBar>("TowerCategoriesTabBar");
         shopContainer = GetNode<GridContainer>("ScrollContainer/TowerContainer");
-        
-        
-        
+
+        DataStorage.Instance.Connect("WaveChanged", new Callable(this, nameof(UpdateWave)));
+        DataStorage.Instance.Connect("CoinsChanged", new Callable(this, nameof(UpdateCoins)));
+
         LoadShopCategories();
         towerCategoriesTabbar.Connect("tab_changed", new Callable(this, nameof(UpdateShopListings)));
         UpdateShopListings(0);
@@ -79,7 +80,18 @@ public partial class UiManager : Control
             icon.SetNameLabel(tower.name);
             icon.SetPrice(tower.cost);
             icon.SetImage(tower.codeName);
+            icon.SetUnlockWave(tower.unlockWave);
+            icon.CheckIfTowerIsPurchasable();
             currentlyVisibleIcons.Add(icon);
         }
+    }
+
+    private void UpdateWave(int wave)
+    {
+        currentWaveLabel.Text = "Wave " + wave;
+    }
+    private void UpdateCoins(int coins)
+    {
+        coinsLabel.Text = "Coins: " + coins;
     }
 }
