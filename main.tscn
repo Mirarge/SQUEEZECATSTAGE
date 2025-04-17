@@ -37,6 +37,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+mouse_filter = 2
 script = ExtResource("6_5vw27")
 
 [node name="LeftSideInformationBox" type="VBoxContainer" parent="UIManager"]
@@ -90,6 +91,7 @@ offset_left = 240.0
 offset_top = 461.0
 offset_right = 1152.0
 offset_bottom = 648.0
+mouse_filter = 1
 theme_override_styles/panel = ExtResource("7_kek77")
 
 [node name="UIBackground" type="ColorRect" parent="UIManager/DecorativePanels"]
@@ -98,6 +100,7 @@ z_index = -2
 offset_top = 489.0
 offset_right = 244.0
 offset_bottom = 648.0
+mouse_filter = 1
 color = Color(0.1029, 0.318982, 0.756082, 1)
 
 [node name="UIBackground3" type="Panel" parent="UIManager/DecorativePanels"]
@@ -107,6 +110,7 @@ offset_left = 232.0
 offset_top = 453.0
 offset_right = 1152.0
 offset_bottom = 649.0
+mouse_filter = 1
 theme_override_styles/panel = ExtResource("8_4c57u")
 
 [node name="UIBackground4" type="ColorRect" parent="UIManager/DecorativePanels"]
@@ -115,3 +119,4 @@ z_index = -2
 offset_top = 481.0
 offset_right = 244.0
 offset_bottom = 489.0
+mouse_filter = 1

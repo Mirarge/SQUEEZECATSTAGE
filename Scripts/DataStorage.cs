@@ -37,8 +37,6 @@ namespace SqueezecatStage.Scripts
         private void LoadEnemies()
         {
             enemyTypes.Add("TestEnemy", GD.Load<PackedScene>("res://ObjectScenes/Enemies/Enemy.tscn"));
-            //towerTypes.Add("CannonTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/CannonTower.tscn"));
-            //towerTypes.Add("BarricadeTower", GD.Load<PackedScene>("res://ObjectScenes/Towers/BarricadeTower.tscn"));
         }
         private void LoadTowerShopDefinitions()
         {
@@ -46,7 +44,6 @@ namespace SqueezecatStage.Scripts
             towerShopDefinitions.Add(new TowerShopDefinition("Cannon RANGED", "CannonTower", 200, "Ranged"));
             towerShopDefinitions.Add(new TowerShopDefinition("Cannon Support", "CannonTower", 120, "Support"));
             towerShopDefinitions.Add(new TowerShopDefinition("Cannon Melee", "CannonTower", 200, "Melee"));
-            towerShopDefinitions.Add(new TowerShopDefinition("Cannon Woaga", "CannonTower", 500, "Woaga"));
         }
     }
 }

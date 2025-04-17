@@ -6,6 +6,7 @@ public partial class Enemy : Node2D
 	public int HP;
 	public float speed = 0.5f;
 	public int attackStrength = 1;
+	public string name;
 	public virtual int sightDistance { get; set; } = 0;
 	public int attackCooldown = 50;
 	public int baseCooldown = 50;

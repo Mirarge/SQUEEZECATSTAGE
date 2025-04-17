@@ -6,7 +6,8 @@ using System.Collections.Generic;
 public partial class WaveManager : Node2D
 {
 	public GameManager gameManager;
-	private List<Enemy> enemies = new List<Enemy>();
+    public List<Enemy> enemyPool = new List<Enemy>();
+    private List<Enemy> enemiesInUse = new List<Enemy>();
 	private float enemyUpdateCooldown = 0f;  // How often to update enemies
 	private double cooldownTimer = 1f;
 	public override void _Process(double delta)
@@ -15,7 +16,7 @@ public partial class WaveManager : Node2D
 
 		if (cooldownTimer >= enemyUpdateCooldown)
 		{
-			foreach (Enemy enemy in enemies)
+			foreach (Enemy enemy in enemiesInUse)
 			{
 				enemy.Update();
 			}
@@ -26,18 +27,33 @@ public partial class WaveManager : Node2D
 
 	public void AddEnemy(string enemyName, int lane)
 	{
-		PackedScene enemyScene = getEnemyByName(enemyName);
-		Enemy enemy = enemyScene.Instantiate<Enemy>();
+        Enemy enemy = null;
+        foreach (Enemy en in enemyPool)
+        {
+            if (en.name == enemyName)
+            {//Use projectile from the pool
+                enemy = en;
+                enemyPool.Remove(en);
+                break;
+            }
+        }
+        if (enemy == null)
+        {//spawn new projectile
+            PackedScene enemyScene = getEnemyByName(enemyName);
+            enemy = enemyScene.Instantiate<Enemy>();
+
+        }
+
 		enemy.Position = new Vector2(gameManager.lanePosition.X+((gameManager.laneManager.laneLength+3)*64)+32 + (lane * 16), (lane*64)+32) + gameManager.lanePosition;
 		enemy.ZIndex = (lane * 2)+1;
-		enemy.Name = enemyName;
+		enemy.name = enemyName;
 		enemy.manager = this;
 		AddChild(enemy);
-		enemies.Add(enemy);
+		enemiesInUse.Add(enemy);
 	}
 	public void DestroyEnemy(Enemy enemy)
 	{
-		enemies.Remove(enemy);
+		enemiesInUse.Remove(enemy);
 		enemy.QueueFree();
 	}
 
