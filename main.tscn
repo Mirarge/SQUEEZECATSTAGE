@@ -26,8 +26,11 @@ script = ExtResource("4_1bvp3")
 [node name="ProjectileManager" type="Node2D" parent="GameManager"]
 script = ExtResource("5_lquwl")
 
-[node name="Boundary" type="Node2D" parent="GameManager"]
+[node name="RightBoundary" type="Node2D" parent="GameManager"]
 position = Vector2(1200, 0)
+
+[node name="LeftBoundary" type="Node2D" parent="GameManager"]
+position = Vector2(-50, 0)
 
 [node name="LanePosition" type="Node2D" parent="GameManager"]
 position = Vector2(204.43, 162.495)
@@ -58,7 +61,7 @@ text = "Coins: "
 
 [node name="EnemiesDefeatedLabel" type="Label" parent="UIManager/LeftSideInformationBox"]
 layout_mode = 2
-text = "Total enemies defeated:"
+text = "Total enemies defeated: 0"
 
 [node name="TowerCategoriesTabBar" type="TabBar" parent="UIManager"]
 top_level = true
@@ -131,4 +134,5 @@ alignment = 1
 [node name="StartNextWaveButton" type="Button" parent="UIManager/NextWaveContainer"]
 custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
+disabled = true
 text = "Start next wave"

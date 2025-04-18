@@ -3,11 +3,12 @@ using System;
 
 public partial class DefaultEnemy : Enemy
 {
-    public override void _Ready()
+    public DefaultEnemy()
     {
-        base._Ready();
         base.HP = 181;
         base.attackStrength = 100;
-        base.budgetCost = 1;
+        base.attackCooldown = base.baseCooldown = 100;
+        base.budgetCost = 2;
+        base.speed = 0.4f;
     }
 }

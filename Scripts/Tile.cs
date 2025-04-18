@@ -45,7 +45,7 @@ public partial class Tile : Node2D
 		
 		if(inputEvent is InputEventMouseButton mouseEvent && mouseEvent.Pressed && mouseEvent.ButtonIndex == MouseButton.Left)//Surely there is a better way to test for left click
 		{
-			if(manager.gameManager.selectedTower == null)
+			if(manager.gameManager.selectedTower == null || isThereATowerOnMe())
 			{
 				return;
 			}

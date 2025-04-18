@@ -23,7 +23,6 @@ namespace SqueezecatStage.Scripts
             {
                 wave = value;
                 EmitSignal(SignalName.WaveChanged, wave);
-                GD.Print("Changing wave to " + wave);
             }
         }
         private int wave = 0;
@@ -38,11 +37,23 @@ namespace SqueezecatStage.Scripts
             {
                 coins = value;
                 EmitSignal(SignalName.CoinsChanged, coins);
-                GD.Print("Changing coins to " + coins);
             }
         }
         private int coins = 0;
 
+        [Signal]
+        public delegate void KilledEnemiesChangedEventHandler(float newCoins);
+
+        public int KilledEnemies
+        {
+            get => killedEnemies;
+            set
+            {
+                killedEnemies = value;
+                EmitSignal(SignalName.KilledEnemiesChanged, killedEnemies);
+            }
+        }
+        private int killedEnemies = 0;
 
 
         public static DataStorage Instance { get; private set; }
@@ -58,7 +69,10 @@ namespace SqueezecatStage.Scripts
         private void LoadProjectiles()
         {
             projectileTypes.Add("TestProjectile", GD.Load<PackedScene>("res://ObjectScenes/Projectiles/Projectile.tscn"));
+            projectileTypes.Add("CannonProjectile", GD.Load<PackedScene>("res://ObjectScenes/Projectiles/CannonProjectile.tscn"));
             projectileTypes.Add("InstProjectile", GD.Load<PackedScene>("res://ObjectScenes/Projectiles/InstProjectile.tscn"));
+            projectileTypes.Add("RangedEnemyProjectile", GD.Load<PackedScene>("res://ObjectScenes/Projectiles/RangedEnemyProjectile.tscn"));
+            projectileTypes.Add("BossShockwaveProjectile", GD.Load<PackedScene>("res://ObjectScenes/Projectiles/BossShockwaveProjectile.tscn"));
         }
         private void LoadTowers()
         {
@@ -73,13 +87,17 @@ namespace SqueezecatStage.Scripts
         {
             //enemyTypes.Add("TestEnemy", GD.Load<PackedScene>("res://ObjectScenes/Enemies/Enemy.tscn"));
             enemyTypes.Add("DefaultEnemy", GD.Load<PackedScene>("res://ObjectScenes/Enemies/DefaultEnemy.tscn"));
+            enemyTypes.Add("FastEnemy", GD.Load<PackedScene>("res://ObjectScenes/Enemies/FastEnemy.tscn"));
+            enemyTypes.Add("RangedEnemy", GD.Load<PackedScene>("res://ObjectScenes/Enemies/RangedEnemy.tscn"));
+            enemyTypes.Add("StrongerEnemy", GD.Load<PackedScene>("res://ObjectScenes/Enemies/StrongerEnemy.tscn"));
+            enemyTypes.Add("CommanderBossEnemy", GD.Load<PackedScene>("res://ObjectScenes/Enemies/CommanderBossEnemy.tscn"));
         }
         private void LoadTowerShopDefinitions()
         {
             towerShopDefinitions.Add(new TowerShopDefinition("Cannon", "CannonTower", 100, "Ranged"));
-            towerShopDefinitions.Add(new TowerShopDefinition("Cannon 2", "Cannon2Tower", 200, "Ranged"));
-            towerShopDefinitions.Add(new TowerShopDefinition("Wall", "WallTower", 50, "Support"));
-            towerShopDefinitions.Add(new TowerShopDefinition("Landmine", "LandmineTower", 200, "Melee", 2));
+            towerShopDefinitions.Add(new TowerShopDefinition("Cannon 2", "Cannon2Tower", 200, "Ranged", 10));
+            towerShopDefinitions.Add(new TowerShopDefinition("Wall", "WallTower", 50, "Support", 5));
+            towerShopDefinitions.Add(new TowerShopDefinition("Landmine", "LandmineTower", 200, "Melee", 20));
         }
     }
 }

@@ -11,6 +11,7 @@ public partial class WaveManager : Node2D
     private List<Enemy> enemiesInUse = new List<Enemy>();
 	private float enemyUpdateCooldown = 0f;  // How often to update enemies
 	private double cooldownTimer = 1f;
+    
 	public override void _Process(double delta)
 	{
 		cooldownTimer += delta;
@@ -25,6 +26,11 @@ public partial class WaveManager : Node2D
 			cooldownTimer = 0.0f;
 		}
 	}
+
+    public bool IsWaveCurrentlyHappening()
+    {
+        return enemiesInUse.Count > 0;
+    }
 
 	public void AddEnemy(string enemyName, int lane)
 	{
@@ -56,13 +62,16 @@ public partial class WaveManager : Node2D
 	public void DestroyEnemy(Enemy enemy)
 	{
 		enemiesInUse.Remove(enemy);
+        gameManager.ModifyCoins(10);
+        gameManager.ModifyKilledEnemies();
 		enemy.QueueFree();
 	}
 
 	public async void SpawnWave(int pointBudget, int waveTimeInSeconds)
 	{
 		gameManager.IncreaseWaveCount();
-
+        //AddEnemy("CommanderBossEnemy", 2);
+        //return;
         Dictionary<string, PackedScene> enemyTypes = DataStorage.Instance.enemyTypes;
         Random rand = new Random();
 
@@ -74,14 +83,13 @@ public partial class WaveManager : Node2D
         {
             affordableEnemiesList.Add(new KeyValuePair<string, int>(kvp.Key, (int)kvp.Value.Instantiate().Get("budgetCost")));
         } //Add all the enemies to the affordable list
-		
 
         while (budgetRemaining > 0)
         {
             // Filter enemies that can be afforded
             if (affordableEnemiesList.Count == 0)
             {
-                GD.Print("Couldn't spend full budget, stopping early.");
+                GD.Print("Couldn't spend full wave budget, stopping early.");
                 break;
             }
 

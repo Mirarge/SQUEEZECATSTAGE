@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://bc31yaep4yacf"]
+
+[ext_resource type="PackedScene" uid="uid://cnopug2rrjm6n" path="res://ObjectScenes/Projectiles/Projectile.tscn" id="1_sr6d5"]
+[ext_resource type="Texture2D" uid="uid://dmrjfrcdm8e7i" path="res://Textures/Projectiles/BossShockwaveProjectile.png" id="2_5xf1t"]
+[ext_resource type="Script" uid="uid://gyphxmq3e44d" path="res://Scripts/Projectiles/BossShockwaveProjectile.cs" id="2_rggi3"]
+
+[node name="Projectile" instance=ExtResource("1_sr6d5")]
+script = ExtResource("2_rggi3")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_5xf1t")

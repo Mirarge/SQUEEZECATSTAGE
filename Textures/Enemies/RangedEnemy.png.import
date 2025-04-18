@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bwhc4ws0ua8ls"
-path="res://.godot/imported/Skeleton.png-75daf2990d7771c1b4b8451c4a8c3296.ctex"
+uid="uid://cy8dyikc8o5y1"
+path="res://.godot/imported/RangedEnemy.png-53d2582fe46a86886ac7637042cf60c9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Textures/Enemies/Skeleton.png"
-dest_files=["res://.godot/imported/Skeleton.png-75daf2990d7771c1b4b8451c4a8c3296.ctex"]
+source_file="res://Textures/Enemies/RangedEnemy.png"
+dest_files=["res://.godot/imported/RangedEnemy.png-53d2582fe46a86886ac7637042cf60c9.ctex"]
 
 [params]
 

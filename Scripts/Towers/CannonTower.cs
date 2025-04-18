@@ -8,7 +8,7 @@ public partial class CannonTower : Tower
         base.HP = 300;
         base.fireCooldown = 10;
         base.baseCooldown = 10;
-        base.sightDistance = 6;
+        base.sightDistance = 8;
         base._Ready();
     }
     public async override void Fire()
@@ -16,7 +16,7 @@ public partial class CannonTower : Tower
 		if (fireCooldown > 0) fireCooldown--;
 		else
 		{
-			manager.gameManager.projectileManager.SpawnProjectile("CannonProjectile", Position, new Vector2(1, 0), this.ZIndex + 1, true);
+			manager.gameManager.projectileManager.SpawnProjectile("CannonProjectile", Position, new Vector2(2, 0), this.ZIndex + 1, true);
 			fireCooldown = baseCooldown;
 		}
 	}

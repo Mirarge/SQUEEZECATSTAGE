@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://d2x5vx1fbrb2i"]
+
+[ext_resource type="PackedScene" uid="uid://wodxcirfxxn2" path="res://ObjectScenes/Enemies/Enemy.tscn" id="1_snijj"]
+[ext_resource type="Script" uid="uid://dm23x1lctcyh2" path="res://Scripts/Enemies/StrongerEnemy.cs" id="2_4hel0"]
+[ext_resource type="Texture2D" uid="uid://4rvmd4klynuv" path="res://Textures/Enemies/StrongerEnemy.png" id="2_pymxg"]
+
+[node name="Enemy" instance=ExtResource("1_snijj")]
+script = ExtResource("2_4hel0")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_pymxg")

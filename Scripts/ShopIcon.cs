@@ -85,6 +85,7 @@ public partial class ShopIcon : Control
             {
                 manager.gameManager.SelectTower(this.towerDefinition);
                 Selected = true;
+                manager.RefreshShop();
             }
         }
     }

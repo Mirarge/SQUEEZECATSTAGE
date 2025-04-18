@@ -4,9 +4,8 @@ using System;
 public partial class InstProjectile : Projectile
 {
 
-    public override void _Ready()
+    public InstProjectile()
     {
-        base._Ready();
         base.damage = int.MaxValue;
     }
 }

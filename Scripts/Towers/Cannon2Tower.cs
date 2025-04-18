@@ -17,10 +17,10 @@ public partial class Cannon2Tower : Tower
         if (fireCooldown > 0) fireCooldown--;
         else
         {
-            manager.gameManager.projectileManager.SpawnProjectile("CannonProjectile", Position, new Vector2(1, 0), this.ZIndex + 1, true);
+            manager.gameManager.projectileManager.SpawnProjectile("CannonProjectile", Position, new Vector2(2, 0), this.ZIndex + 1, true);
             fireCooldown = baseCooldown; //Set cooldown before waiting so we don't have another trigger of the method.
             await ToSignal(GetTree().CreateTimer(0.25f), "timeout");
-            manager.gameManager.projectileManager.SpawnProjectile("CannonProjectile", Position, new Vector2(1, 0), this.ZIndex + 1, true);
+            manager.gameManager.projectileManager.SpawnProjectile("CannonProjectile", Position, new Vector2(2, 0), this.ZIndex + 1, true);
             
         }
     }

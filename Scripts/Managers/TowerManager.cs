@@ -9,6 +9,8 @@ public partial class TowerManager : Node2D
     
     public GameManager gameManager;
 
+    private int barricadesLeftStanding;
+
     public void PlaceTower(Tile tile, string towerName)
     {
         if (tile.isThereATowerOnMe()) return;
@@ -22,12 +24,25 @@ public partial class TowerManager : Node2D
 
         towers.Add(tower);
         tile.placeTower(tower);
+        if(towerName == "BarricadeTower")
+        {
+            barricadesLeftStanding++;
+            GD.Print(barricadesLeftStanding);
+        }
     }
     public void DestroyTower(Tower tower)
     {
         towers.Remove(tower);
         tower.myTile.removeTower();
         tower.QueueFree();
+        if (tower is BarricadeTower)
+        {
+            barricadesLeftStanding--;
+        }
+        if (barricadesLeftStanding <= 0) 
+        {
+            gameManager.Lose();
+        }
     }
 
     public void FireAllTowers()

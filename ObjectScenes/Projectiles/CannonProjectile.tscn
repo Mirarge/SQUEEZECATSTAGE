@@ -1,0 +1,11 @@
+[gd_scene load_steps=4 format=3 uid="uid://q1xeexdamhs3"]
+
+[ext_resource type="PackedScene" uid="uid://cnopug2rrjm6n" path="res://ObjectScenes/Projectiles/Projectile.tscn" id="1_r5v5d"]
+[ext_resource type="Script" uid="uid://d25lesregndsn" path="res://Scripts/Projectiles/CannonProjectile.cs" id="2_8yipr"]
+[ext_resource type="Texture2D" uid="uid://ij5rj0n76hvg" path="res://Textures/Projectiles/CannonProjectile.png" id="2_kjlwq"]
+
+[node name="Projectile" instance=ExtResource("1_r5v5d")]
+script = ExtResource("2_8yipr")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_kjlwq")

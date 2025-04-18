@@ -10,6 +10,8 @@ public partial class UiManager : Control
     private Label currentWaveLabel;
     private Label coinsLabel;
     private Label enemiesDefeatedLabel;
+    private Button startNextWaveButton;
+
     private TabBar towerCategoriesTabbar;
     private GridContainer shopContainer;
     private List<ShopIcon> currentlyVisibleIcons = new List<ShopIcon>();
@@ -30,8 +32,12 @@ public partial class UiManager : Control
         towerCategoriesTabbar = GetNode<TabBar>("TowerCategoriesTabBar");
         shopContainer = GetNode<GridContainer>("ScrollContainer/TowerContainer");
 
+        startNextWaveButton = GetNode<Button>("NextWaveContainer/StartNextWaveButton");
+
         DataStorage.Instance.Connect("WaveChanged", new Callable(this, nameof(UpdateWave)));
         DataStorage.Instance.Connect("CoinsChanged", new Callable(this, nameof(UpdateCoins)));
+        DataStorage.Instance.Connect("KilledEnemiesChanged", new Callable(this, nameof(UpdateKilledEnemies)));
+        startNextWaveButton.Connect("pressed", new Callable(this, nameof(RequestNextWave)));
 
         LoadShopCategories();
         towerCategoriesTabbar.Connect("tab_changed", new Callable(this, nameof(UpdateShopListings)));
@@ -50,6 +56,11 @@ public partial class UiManager : Control
             }
             shopTabs[towerDefinition.category].Add(towerDefinition);
         }
+    }
+
+    public void RefreshShop()
+    {
+        UpdateShopListings(towerCategoriesTabbar.CurrentTab);
     }
     private void UpdateShopListings(int tabIndex)
     {
@@ -87,13 +98,30 @@ public partial class UiManager : Control
             currentlyVisibleIcons.Add(icon);
         }
     }
+    private void RequestNextWave()
+    {
+        gameManager.RequestNextWave();
+    }
 
     private void UpdateWave(int wave)
     {
         currentWaveLabel.Text = "Wave " + wave;
+        startNextWaveButton.Disabled = true;
     }
     private void UpdateCoins(int coins)
     {
         coinsLabel.Text = "Coins: " + coins;
+    }
+    private void UpdateKilledEnemies(int enemies)
+    {
+        enemiesDefeatedLabel.Text = "Total enemies defeated: " + enemies;
+        if (gameManager.waveManager.IsWaveCurrentlyHappening()) 
+        {
+            startNextWaveButton.Disabled = true;
+        }
+        else
+        {
+            startNextWaveButton.Disabled = false;
+        }
     }
 }

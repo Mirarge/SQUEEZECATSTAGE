@@ -25,7 +25,7 @@ public partial class Projectile : Node2D
     public void Update()
     {
         Position += direction;
-        if (Position.X > manager.gameManager.boundary.Position.X)
+        if (Position.X > manager.gameManager.Rboundary.Position.X || Position.X < manager.gameManager.Lboundary.Position.X)
         { //If we're too far out, just remove the projectile.
             HP = -1;
             this.manager.RequestProjectileRemoval(this);
@@ -36,11 +36,13 @@ public partial class Projectile : Node2D
     {
         if (isTowerProjectile) //Making sure the projectile only detects the hitbox of the opposing team
         {
+            //this.Modulate = new Color(0, 1, 0, 0.5f); //debugging team colors
             hitbox.SetCollisionMaskValue(1, false);
             hitbox.SetCollisionMaskValue(3, true);
         }
         else
         {
+            //this.Modulate = new Color(1, 0, 0, 0.5f);
             hitbox.SetCollisionMaskValue(1, true);
             hitbox.SetCollisionMaskValue(3, false);
         }
@@ -60,7 +62,7 @@ public partial class Projectile : Node2D
             {
                 (parent as Tower).TakeDamage(damage);
             }
-            TakeDamage(1); //Makes piercing projectiles possible if wanted later on.
+            TakeDamage(1); //Makes piercing projectiles possible
         }
     }
 
