@@ -124,4 +124,22 @@ public partial class UiManager : Control
             startNextWaveButton.Disabled = false;
         }
     }
+
+    public void RequestGameOverScreen()
+    {
+        //This only has to happen once so we won't save any references outside of here
+        Label enemiesDefeatedLabel = GetNode<Label>("GameOverPanel/VBoxContainer/Panel/VBoxContainer/EnemiesDefeatedLabel");
+        Label wavesSurvivedLabel = GetNode<Label>("GameOverPanel/VBoxContainer/Panel/VBoxContainer/WavesSurvivedLabel");
+        GetNode<Button>("GameOverPanel/VBoxContainer/Panel/VBoxContainer/RetryButton").Connect("pressed", new Callable(this, nameof(RetryButtonPressed)));
+        Panel gameOverPanel = GetNode<Panel>("GameOverPanel");
+
+        enemiesDefeatedLabel.Text = "You defeated " + DataStorage.Instance.KilledEnemies + " enemies";
+        wavesSurvivedLabel.Text = "You survived " + (DataStorage.Instance.Wave - 1).ToString() + " waves";
+        gameOverPanel.Visible = true;
+    }
+
+    private void RetryButtonPressed()
+    {
+        GetTree().ReloadCurrentScene();
+    }
 }

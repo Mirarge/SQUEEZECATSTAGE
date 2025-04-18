@@ -27,7 +27,6 @@ public partial class TowerManager : Node2D
         if(towerName == "BarricadeTower")
         {
             barricadesLeftStanding++;
-            GD.Print(barricadesLeftStanding);
         }
     }
     public void DestroyTower(Tower tower)
@@ -39,7 +38,8 @@ public partial class TowerManager : Node2D
         {
             barricadesLeftStanding--;
         }
-        if (barricadesLeftStanding <= 0) 
+        GD.Print(barricadesLeftStanding);
+        if (barricadesLeftStanding <= 1) 
         {
             gameManager.Lose();
         }

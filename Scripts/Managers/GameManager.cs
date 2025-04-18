@@ -67,7 +67,7 @@ public partial class GameManager : Node2D
 
 	public void Lose()
 	{
-		GD.Print("You have LOST");
+		uiManager.RequestGameOverScreen();
 	}
 
     public void IncreaseWaveCount()

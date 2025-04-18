@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://blwig0qme0s13"]
+[gd_scene load_steps=11 format=3 uid="uid://blwig0qme0s13"]
 
 [ext_resource type="Script" uid="uid://deftxc5g2dmqo" path="res://Scripts/Managers/LaneManager.cs" id="1_h2yge"]
 [ext_resource type="Script" uid="uid://cb7r53i7sq6qm" path="res://Scripts/Managers/TowerManager.cs" id="2_1bvp3"]
@@ -8,6 +8,12 @@
 [ext_resource type="Script" uid="uid://d0ui8xo45n35c" path="res://Scripts/Managers/UiManager.cs" id="6_5vw27"]
 [ext_resource type="StyleBox" uid="uid://cktyg868nam2n" path="res://Styles/sidepanel.stylebox" id="7_kek77"]
 [ext_resource type="StyleBox" uid="uid://dr2vkbwaryfap" path="res://Styles/sidepanel_border.stylebox" id="8_4c57u"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5vw27"]
+bg_color = Color(0, 0, 0, 0.690196)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kek77"]
+bg_color = Color(0.154876, 0.154876, 0.154876, 1)
 
 [node name="SceneRoot" type="Node2D"]
 
@@ -42,6 +48,55 @@ offset_right = 40.0
 offset_bottom = 40.0
 mouse_filter = 2
 script = ExtResource("6_5vw27")
+
+[node name="GameOverPanel" type="Panel" parent="UIManager"]
+visible = false
+z_index = 999
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_5vw27")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIManager/GameOverPanel"]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="Panel" type="Panel" parent="UIManager/GameOverPanel/VBoxContainer"]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 6
+theme_override_styles/panel = SubResource("StyleBoxFlat_kek77")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UIManager/GameOverPanel/VBoxContainer/Panel"]
+layout_mode = 0
+offset_right = 400.0
+offset_bottom = 200.0
+
+[node name="GameOverLabel" type="Label" parent="UIManager/GameOverPanel/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Your castle was taken"
+horizontal_alignment = 1
+
+[node name="EnemiesDefeatedLabel" type="Label" parent="UIManager/GameOverPanel/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "You defeated x enemies"
+horizontal_alignment = 1
+
+[node name="WavesSurvivedLabel" type="Label" parent="UIManager/GameOverPanel/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "You survived x waves"
+horizontal_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="UIManager/GameOverPanel/VBoxContainer/Panel/VBoxContainer"]
+custom_minimum_size = Vector2(0, 34.825)
+layout_mode = 2
+
+[node name="RetryButton" type="Button" parent="UIManager/GameOverPanel/VBoxContainer/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Retry"
 
 [node name="LeftSideInformationBox" type="VBoxContainer" parent="UIManager"]
 top_level = true
